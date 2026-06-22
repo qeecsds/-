@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>主体性三支柱 — 在场・守界・主宰</title>
+<style>
+  @font-face {
+    font-family: 'Noto Serif SC';
+    src: local('Noto Serif SC'), local('Source Han Serif SC'), local('SimSun'), local('STSong'), local('Songti SC');
+  }
+  :root {
+    --bg: #FFFFFF;
+    --ink: #111111;
+    --gray: #888888;
+    --light-gray: #CCCCCC;
+    --rule: #E5E5E5;
+    --accent: #69DB7C;
+    --max: 900px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+  body {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', 'STSong', 'Songti SC', serif;
+    background: var(--bg); color: var(--ink); line-height: 2; overflow-x: hidden;
+  }
+  .slide {
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 2rem 2rem; position: relative;
+    background: var(--bg); text-align: center;
+  }
+  #slide2, #slide3, #slide4 {
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    padding: 0 2rem;
+    position: relative;
+  }
+  #slide2 .slide-container,
+  #slide3 .slide-container,
+  #slide4 .slide-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transform: translateY(-5vh);
+  }
+  #slide2 .pillar-tag,
+  #slide3 .pillar-tag,
+  #slide4 .pillar-tag {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    margin-bottom: 0;
+    z-index: 10;
+  }
+  #slide2 .pillar-heading,
+  #slide3 .pillar-heading,
+  #slide4 .pillar-heading {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: var(--ink);
+    text-align: left;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  #slide2 .layout,
+  #slide3 .layout,
+  #slide4 .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+  }
+  #slide2 .left-col,
+  #slide3 .left-col,
+  #slide4 .left-col {
+    text-align: left;
+  }
+  #slide2 .layout p,
+  #slide3 .layout p,
+  #slide4 .layout p {
+    margin: 0 0 0.8rem;
+    max-width: 100%;
+  }
+  #slide2 .layout .action-text,
+  #slide3 .layout .action-text,
+  #slide4 .layout .action-text {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+  }
+  #slide2 .layout .practice,
+  #slide3 .layout .practice,
+  #slide4 .layout .practice {
+    margin-top: 1.2rem;
+    padding: 1rem 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+  #slide2 .layout .positive,
+  #slide3 .layout .positive,
+  #slide4 .layout .positive {
+    margin-top: 0.8rem;
+  }
+  #slide2 .layout .btn-next,
+  #slide3 .layout .btn-next,
+  #slide4 .layout .btn-next {
+    margin-top: 1.5rem;
+  }
+  .slide-container { max-width: var(--max); width: 100%; position: relative; z-index: 2; }
+  .progress { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 2px; background: var(--rule); }
+  .progress-bar { height: 100%; background: var(--ink); width: 0%; transition: width 0.6s ease; }
+  h1 { font-size: clamp(2.5rem,6vw,4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: 0.05em; margin-bottom: 1.5rem; color: var(--ink); }
+  h2 { font-size: clamp(2rem,4.5vw,3.5rem); font-weight: 900; line-height: 1.15; letter-spacing: 0.04em; margin-bottom: 1.5rem; color: var(--ink); }
+  h3 { font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 900; line-height: 1.3; margin-bottom: 1rem; color: var(--ink); letter-spacing: 0.03em; }
+  p { font-size: clamp(0.85rem,1.1vw,0.95rem); font-weight: 400; line-height: 1.9; color: var(--gray); max-width: 640px; margin: 0 auto 0.8rem; }
+  .scene { font-size: clamp(0.8rem,1.1vw,0.9rem); color: var(--light-gray); letter-spacing: 0.08em; margin-bottom: 1rem; font-style: italic; }
+  .action-text { color: var(--ink); font-weight: 700; margin-top: 2rem; font-size: clamp(0.95rem,1.3vw,1.05rem); line-height: 2; }
+  .definition { margin: 0.8rem 0; padding: 0.8rem 1.2rem; border-left: 2px solid var(--rule); text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; font-size: clamp(0.8rem,1vw,0.9rem); color: var(--gray); line-height: 1.7; }
+  .definition strong { color: var(--ink); }
+  .pain-list { text-align: left; max-width: 560px; margin: 1.5rem auto; }
+  .pain-list span { display: block; font-size: clamp(0.9rem,1.2vw,1rem); color: var(--gray); padding: 0.4rem 0; border-bottom: 1px solid var(--rule); }
+  .pain-list span::before { content: "— "; color: var(--light-gray); }
+  .practice { margin-top: 1.2rem; padding: 1rem 1.5rem; border: 1px solid var(--rule); text-align: left; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .practice-label { font-size: 0.75rem; color: var(--light-gray); letter-spacing: 0.15em; margin-bottom: 0.8rem; }
+  .practice p { color: var(--ink); font-weight: 500; font-size: clamp(0.9rem,1.2vw,1rem); margin: 0; max-width: 100%; }
+  .practice-hint { font-size: 0.8rem; color: var(--light-gray); margin-top: 0.8rem; font-style: italic; }
+  .stat-row { display: flex; gap: 3rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
+  .stat-card { text-align: center; min-width: 120px; }
+  .stat-num { font-size: clamp(2rem,4vw,3rem); font-weight: 900; color: var(--ink); line-height: 1; }
+  .stat-label { font-size: 0.8rem; color: var(--gray); margin-top: 0.5rem; letter-spacing: 0.05em; }
+  .divider-line { width: 40px; height: 1px; background: var(--ink); margin: 1.2rem auto; }
+  .pillar-tag { display: inline-block; padding: 0.25rem 0.8rem; border: 1px solid var(--rule); font-size: 0.7rem; color: var(--gray); letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .golden-quote { font-size: clamp(1.1rem,1.8vw,1.4rem); color: var(--ink); font-weight: 700; letter-spacing: 0.03em; margin: 3rem auto; max-width: 600px; line-height: 1.8; }
+  .positive { font-size: clamp(0.8rem,1vw,0.9rem); color: var(--light-gray); margin-top: 0.8rem; font-style: italic; }
+  .btn-next { display: inline-block; margin-top: 1.5rem; padding: 0.8rem 2.5rem; background: var(--ink); color: #fff; border: none; font-size: 0.9rem; font-weight: 500; text-decoration: none; letter-spacing: 0.15em; cursor: pointer; transition: all 0.4s ease; }
+  .btn-next:hover { background: var(--accent); color: var(--ink); }
+
+  /* Quiz */
+  .quiz { margin: 2rem auto; max-width: 600px; text-align: left; }
+  .quiz-rule { font-size: 0.8rem; color: var(--light-gray); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+  .quiz-question { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+  .quiz-q { font-size: clamp(0.9rem,1.2vw,1rem); color: var(--ink); font-weight: 500; margin-bottom: 0.5rem; }
+  .quiz-options { display: flex; gap: 0.8rem; margin-top: 0.5rem; flex-wrap: wrap; }
+  .quiz-opt { font-size: 0.82rem; color: var(--gray); padding: 0.3rem 0.8rem; border: 1px solid var(--rule); cursor: pointer; transition: all 0.3s; }
+  .quiz-opt:hover, .quiz-opt.selected { border-color: var(--ink); color: var(--ink); }
+  .quiz-opt.selected { font-weight: 700; }
+  .quiz-result { margin-top: 2rem; padding: 2rem; border: 1px solid var(--rule); text-align: center; display: none; }
+  .quiz-result.show { display: block; }
+  .quiz-result-num { font-size: clamp(2rem,4vw,3rem); font-weight: 900; color: var(--ink); }
+  .quiz-result-label { font-size: 0.85rem; color: var(--gray); margin-top: 0.3rem; }
+  .quiz-result-text { font-size: 0.9rem; color: var(--gray); margin-top: 1rem; line-height: 1.8; }
+  .quiz-fixes { margin-top: 1.5rem; text-align: left; }
+  .quiz-fix-item { font-size: 0.85rem; color: var(--gray); padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+  .quiz-fix-item strong { color: var(--ink); }
+  .quiz-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .quiz-cta a { padding: 0.8rem 2rem; font-size: 0.9rem; text-decoration: none; transition: all 0.3s; }
+  .quiz-cta .primary { background: var(--ink); color: #fff; border: 1px solid var(--ink); }
+  .quiz-cta .secondary { border: 1px solid var(--rule); color: var(--gray); }
+  .quiz-cta a:hover { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+
+  /* CTA Stack */
+  .cta-stack { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
+  .cta-item { font-size: clamp(0.9rem,1.2vw,1rem); color: var(--gray); text-decoration: none; padding: 0.8rem 2rem; border: 1px solid var(--rule); transition: all 0.3s; letter-spacing: 0.05em; text-align: center; max-width: 400px; }
+  .cta-item:hover { border-color: var(--ink); color: var(--ink); }
+  .cta-item.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .cta-item.primary:hover { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+  .cta-desc { font-size: 0.78rem; color: var(--light-gray); margin-top: 0.3rem; display: block; }
+
+  /* Testimonials */
+  .testimonials { margin: 3rem auto; max-width: 600px; text-align: left; }
+  .testimonial { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+  .testimonial p { font-size: 0.9rem; color: var(--ink); font-weight: 500; margin: 0; font-style: italic; }
+  .testimonial .author { font-size: 0.78rem; color: var(--light-gray); margin-top: 0.3rem; font-style: normal; }
+
+  /* Retention */
+  .retention { margin-top: 3rem; font-size: 0.78rem; color: var(--light-gray); letter-spacing: 0.05em; }
+
+  /* Screen specifics */
+  #slide1 { background: var(--bg); overflow: hidden; }
+  #slide1 .hero-bg { position: absolute; inset: 0; z-index: 1; background: url('assets/side_profile_sparse_16x9.jpg') center 40% / 80% auto no-repeat; opacity: 0.08; filter: grayscale(100%) contrast(1.1); }
+  #slide1 .subtitle { font-size: clamp(1rem,1.8vw,1.3rem); font-weight: 400; color: var(--gray); margin-top: 1rem; letter-spacing: 0.1em; }
+  #slide1 .audience { font-size: clamp(0.8rem,1.1vw,0.9rem); color: var(--light-gray); margin-top: 2.5rem; letter-spacing: 0.08em; font-style: italic; }
+  #slide-data { background: var(--bg); }
+  #slide-data .stat-row { margin: 3.5rem 0; }
+  #slide-data .stat-card { padding: 2rem 1.5rem; border: 1px solid var(--rule); }
+  #slide-data .source { font-size: 0.75rem; color: var(--light-gray); margin-top: 2rem; letter-spacing: 0.05em; }
+  #slide2 { background: #FAFAFA; }
+  #slide2 .battery-wrap { margin-bottom: 1rem; }
+  #slide2 .battery-icon { width: 80px; height: 40px; border: 1.5px solid var(--light-gray); border-radius: 3px; position: relative; display: flex; align-items: center; padding: 3px; }
+  #slide2 .battery-icon::after { content: ""; position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 4px; height: 14px; background: var(--light-gray); border-radius: 0 2px 2px 0; }
+  #slide2 .battery-level { height: 100%; background: var(--ink); animation: drain 3s ease-in-out infinite; border-radius: 1px; }
+  @keyframes drain { 0%, 100% { width: 2%; } 50% { width: 5%; } }
+  #slide2 .battery-label { font-size: 0.7rem; color: var(--gray); margin-top: 0.4rem; letter-spacing: 0.1em; }
+  #slide3 { background: var(--bg); position: relative; }
+  #slide3::before { content: ""; position: absolute; inset: 0; z-index: 1; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+  #slide3 .shield-wrap { margin-bottom: 0.8rem; }
+  #slide3 .shield-wrap img { width: 140px; height: auto; opacity: 0.5; filter: grayscale(100%) contrast(1.1); }
+  #slide4 { background: #F5F5F5; }
+  #slide4 .layout .definition { margin-left: 0; margin-right: 0; max-width: 100%; }
+  #slide-quiz { background: var(--bg); }
+  #slide6 { background: var(--bg); }
+  #slide6 .summary { font-size: clamp(0.9rem,1.2vw,1rem); color: var(--gray); margin-bottom: 2.5rem; max-width: 480px; }
+  #slide6 h1 { margin-bottom: 2rem; }
+  @media (max-width: 640px) {
+    .slide { padding: 4rem 1.5rem; }
+    #slide1 .hero-bg { background-size: 120% auto; opacity: 0.06; }
+    .stat-row { gap: 2rem; }
+    .cta-stack { gap: 1rem; }
+    .quiz-cta { flex-direction: column; align-items: center; }
+    #slide2 .layout, #slide3 .layout, #slide4 .layout { grid-template-columns: 1fr; gap: 1.5rem; }
+    #slide2 .pillar-heading, #slide3 .pillar-heading, #slide4 .pillar-heading { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+  }
+
+  /* Role buttons */
+  .role-btn { padding: 0.8rem 1.8rem; border: 1px solid var(--rule); font-size: 0.9rem; font-family: inherit; cursor: pointer; transition: all 0.3s; letter-spacing: 0.05em; background: var(--bg); color: var(--gray); }
+  .role-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* Day cards */
+  .day-card { display: flex; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+  .day-card:last-child { border-bottom: none; }
+  .day-num { font-size: 2rem; font-weight: 900; color: var(--light-gray); line-height: 1; min-width: 40px; text-align: center; padding-top: 0.2rem; }
+  .day-body { flex: 1; }
+  .day-tag { font-size: 0.75rem; color: var(--light-gray); letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .day-task { font-size: 0.92rem; color: var(--gray); line-height: 1.9; margin: 0; }
+  .day-egg { margin-top: 0.8rem; padding: 0.8rem 1rem; border: 1px dashed var(--rule); background: rgba(0,0,0,0.01); }
+  .egg-label { font-size: 0.78rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.4rem; font-weight: 600; }
+  .day-egg p { font-size: 0.82rem; color: var(--light-gray); line-height: 1.7; margin: 0; font-style: italic; }
+
+  /* Open text input in quiz */
+  .quiz-textarea { width: 100%; min-height: 80px; padding: 0.8rem; border: 1px solid var(--rule); font-family: inherit; font-size: 0.9rem; resize: none; outline: none; margin-top: 0.5rem; }
+  .quiz-textarea:focus { border-color: var(--ink); }
+  .quiz-submit { margin-top: 0.5rem; padding: 0.5rem 1.5rem; border: 1px solid var(--rule); background: var(--bg); font-family: inherit; font-size: 0.82rem; cursor: pointer; transition: all 0.3s; }
+  .quiz-submit:hover { border-color: var(--ink); }
+
+  /* Trigger popup */
+  .trigger-popup { margin-top: 1rem; padding: 1rem 1.2rem; border: 1px solid var(--rule); background: #FAFAFA; font-size: 0.85rem; color: var(--gray); line-height: 1.8; display: none; }
+  .trigger-popup.show { display: block; animation: fadeInUp 0.4s ease; }
+  .trigger-popup strong { color: var(--ink); }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Breathing pause */
+  .breath-pause { text-align: center; padding: 3rem 0; display: none; }
+  .breath-pause.show { display: block; }
+  .breath-pause .breath-circle { width: 80px; height: 80px; border-radius: 50%; border: 1.5px solid var(--rule); margin: 0 auto 1.5rem; animation: breathe 4s ease-in-out infinite; }
+  @keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.15); opacity: 1; } }
+  .breath-pause p { font-size: 0.9rem; color: var(--light-gray); font-style: italic; }
+  .breath-pause button { margin-top: 1.5rem; padding: 0.6rem 2rem; border: 1px solid var(--rule); background: var(--bg); font-family: inherit; font-size: 0.85rem; cursor: pointer; }
+  .breath-pause button:hover { border-color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- HERO -->
+<section class="slide" id="slide1">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="slide-container">
+    <h1>拒绝外包，做回自己。</h1>
+    <p class="subtitle">别把感知、判断与决策，拱手让给算法与他人。</p>
+    <p class="audience">献给每一个不想被工具驯化、不想被他人定义的人。</p>
+    <a href="#slide-data" class="btn-next">我也有同感</a>
+  </div>
+</section>
+
+<!-- DATA -->
+<section class="slide" id="slide-data">
+  <div class="slide-container">
+    <p class="scene">这不是你的错觉，是 2026 年正在发生的事。</p>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-num">68%</div><div class="stat-label">员工因技能不匹配<br/>感到焦虑</div></div>
+      <div class="stat-card"><div class="stat-num">75%</div><div class="stat-label">AI 自动化<br/>普及率</div></div>
+      <div class="stat-card"><div class="stat-num">47%</div><div class="stat-label">年轻人主动<br/>降低欲望</div></div>
+    </div>
+    <p class="golden-quote">AI 能替你干活，但替你活不了。</p>
+    <p class="source">数据来源：2026 职场变革报告 / 《2026 年轻人疲劳报告》</p>
+    <a href="#slide2" class="btn-next">继续</a>
+  </div>
+</section>
+
+<!-- 在场 -->
+<section class="slide" id="slide2">
+    <div class="pillar-tag">第一支柱 · 在场</div>
+  <div class="slide-container">
+    <div class="layout">
+      <div class="left-col">
+        <h3 class="pillar-heading">手机没电就焦虑？</h3>
+        <div class="battery-wrap"><div class="battery-icon"><div class="battery-level"></div></div><div class="battery-label">1% 电量</div></div>
+      </div>
+      <div class="right-col">
+        <p>你有没有觉得，在这个AI唾手可得的时代，我们好像越来越"轻"了？</p>
+        <p>这种"轻"，是因为我们习惯了把感知、判断和决策，统统外包给外面的世界。</p>
+        <p>想象一下，当你的手机只剩1%的电量，或者突然断网，那种瞬间涌上来的焦虑到底是什么？其实，你怕的不是失联，你怕的是失去了那块替你感知世界的屏幕。</p>
+        <p class="action-text">第一步，是让你重新学会"在场"。当AI离线，拔掉插头，去用你自己的皮肤感受风的温度，用你自己的眼睛观察街道的纹理。别急着找信号，先找回那个脱离设备后，依然鲜活、敏锐的自己。</p>
+        <div class="practice">
+          <div class="practice-label">今天的练习</div>
+          <p>放下手机，用 30 秒认真感受一下你此刻的呼吸和脚下的温度。</p>
+          <p class="practice-hint">坚持 7 天，你会重新建立"不依赖屏幕也能感知世界"的信心。</p>
+        </div>
+        <p class="positive">夺回在场感，你会发现真实世界比信息流更丰富。</p>
+        <a href="#slide3" class="btn-next">继续</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 守界 -->
+<section class="slide" id="slide3">
+    <div class="pillar-tag">第二支柱 · 守界</div>
+  <div class="slide-container">
+    <div class="layout">
+      <div class="left-col">
+        <h3 class="pillar-heading">被PUA就自我怀疑？</h3>
+        <div class="shield-wrap">
+          <img src="assets/shield_line_art.jpg" alt="守界">
+        </div>
+      </div>
+      <div class="right-col">
+        <p>当你重新感知到真实，你就会发现：原来你的大脑，不需要安装别人的操作系统。</p>
+        <p>在真实的世界里，我们依然容易被另一种东西绑架——那就是外界的声音。老板一句轻描淡写的打压（PUA），社交媒体上贩卖的焦虑，甚至是AI给出的看似完美的"标准答案"，都在试图接管你的价值判断。</p>
+        <p class="action-text">我们要做的，是帮你建起一道"认知防火墙"。把判断是非的权利，重新收回到自己手里。</p>
+        <div class="practice">
+          <div class="practice-label">今天的练习</div>
+          <p>下次听到让你自我怀疑的声音，先问自己一句：这是事实，还是别人的评判？</p>
+          <p class="practice-hint">坚持 7 天，你会形成"先过滤再吸收"的思维本能。</p>
+        </div>
+        <p class="positive">守住判断的边界，你既能听取建议，又不会丢失自我。</p>
+        <a href="#slide4" class="btn-next">继续</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主宰 -->
+<section class="slide" id="slide4">
+    <div class="pillar-tag">第三支柱 · 主宰</div>
+  <div class="slide-container">
+    <div class="layout">
+      <div class="left-col">
+        <h3 class="pillar-heading">害怕被AI替代？</h3>
+        <div class="definition">
+          <strong>主体性，简单说就是：</strong>大事小事，最终判断和选择权牢牢握在自己手里。工具只负责干活，不替你做决定。
+        </div>
+      </div>
+      <div class="right-col">
+        <p>很多人害怕被AI替代，是因为他们一直把自己放在"执行者"的位置上，满足于AI给出的那60分的平庸答案。</p>
+        <p>当你的内核足够稳定，AI就不再是你的替代者，而是你最得力的助手。你定方向、做判断；AI负责落地、执行。</p>
+        <div class="practice">
+          <div class="practice-label">今天的练习</div>
+          <p>下次用 AI 之前，先写下：我要的方向是什么？我要保留哪部分属于我的判断？</p>
+          <p class="practice-hint">坚持 7 天，你会形成"先定方向再用工具"的决策习惯。</p>
+        </div>
+        <p class="positive">夺回主宰权，你既能善用 AI 的效率，又不会丢失自我。</p>
+        <a href="#slide-quiz" class="btn-next">开始自测：我的主体性流失了多少</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="slide" id="slide-quiz">
+  <div class="slide-container">
+    <p class="scene">花 30 秒，测一测你的主体性流失了多少。</p>
+
+    <!-- 身份选择 -->
+    <div id="roleSelect">
+      <p style="font-size:clamp(0.95rem,1.3vw,1.05rem);color:var(--gray);margin-bottom:1.5rem">选择你当前最主要的角色，获取专属题库：</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto">
+        <button class="role-btn" onclick="loadRole('work')">职场人</button>
+        <button class="role-btn" onclick="loadRole('student')">学生/学习者</button>
+        <button class="role-btn" onclick="loadRole('creator')">自由职业者/创作者</button>
+        <button class="role-btn" onclick="loadRole('leader')">管理者/团队Leader</button>
+      </div>
+    </div>
+
+    <!-- 题目区域 -->
+    <div id="quizArea" style="display:none">
+      <div class="quiz-rule" id="quizRule"></div>
+      <div class="quiz" id="quiz"></div>
+      <div class="quiz-result" id="quizResult">
+        <div class="quiz-result-num" id="quizScore"></div>
+        <div class="quiz-result-label" id="quizLabel"></div>
+        <div class="quiz-result-text" id="quizText"></div>
+        <div class="quiz-fixes" id="quizFixes"></div>
+        <div class="quiz-cta" id="quizCta">
+          <a href="#slide-7day" class="primary">领取我的 7 天微练习</a>
+          <a href="#slide-7day" class="secondary">查看重建方案</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#slide-7day" class="btn-next" id="skipQuiz" style="display:none">跳过，直接看方案</a>
+  </div>
+</section>
+
+<!-- 7天微练习 -->
+<section class="slide" id="slide-7day">
+  <div class="slide-container">
+    <p class="scene">每天 5 分钟，从觉醒到习惯。</p>
+    <h2>7 天微练习</h2>
+    <p style="max-width:560px">不是打卡任务，而是与自己的对话。每天 5 分钟，重建你的决策主体性。</p>
+    <div class="divider-line"></div>
+
+    <div id="dayCards" style="max-width:640px;margin:0 auto;text-align:left">
+      <!-- Day 1 -->
+      <div class="day-card">
+        <div class="day-num">01</div>
+        <div class="day-body">
+          <div class="day-tag">在场 · 身体锚点</div>
+          <p class="day-task">设置 3 个随机闹钟，响铃时停下手中事，用 1 分钟感受"脚踩地面的触感、呼吸的节奏、周围 3 种声音"。</p>
+
+        </div>
+      </div>
+      <!-- Day 2 -->
+      <div class="day-card">
+        <div class="day-num">02</div>
+        <div class="day-body">
+          <div class="day-tag">在场 · 情绪命名</div>
+          <p class="day-task">遇到情绪波动时暂停 10 秒，用"我感到______（情绪词），因为______（事实）"句式记录，禁止使用评判性语言。</p>
+        </div>
+      </div>
+      <!-- Day 3 -->
+      <div class="day-card">
+        <div class="day-num">03</div>
+        <div class="day-body">
+          <div class="day-tag">守界 · 信息过滤器</div>
+          <p class="day-task">当天接收 3 条外部信息时，先问"这条信息是否经过我的价值筛选？"记录你过滤了什么、为什么保留或拒绝。</p>
+        </div>
+      </div>
+      <!-- Day 4 -->
+      <div class="day-card">
+        <div class="day-num">04</div>
+        <div class="day-body">
+          <div class="day-tag">守界 · 评价解绑</div>
+          <p class="day-task">收到他人评价时，写下"对方说的原话"，标注"这是事实还是评判？"最后问自己"这个评价是否影响我对自己的核心认知？"</p>
+        </div>
+      </div>
+      <!-- Day 5 -->
+      <div class="day-card">
+        <div class="day-num">05</div>
+        <div class="day-body">
+          <div class="day-tag">主宰 · 小决策主权</div>
+          <p class="day-task">做一个微小决策时，先手写"我的真实需求是什么？"再参考外部建议，对比差异，记录最终选择和原因。</p>
+        </div>
+      </div>
+      <!-- Day 6 -->
+      <div class="day-card">
+        <div class="day-num">06</div>
+        <div class="day-body">
+          <div class="day-tag">主宰 · 创造优先于优化</div>
+          <p class="day-task">完成一项创作/工作时，先用 10 分钟手写"我最想表达的核心是什么？"再使用工具辅助，标注哪些部分必须坚持自己的表达。</p>
+        </div>
+      </div>
+      <!-- Day 7 -->
+      <div class="day-card">
+        <div class="day-num">07</div>
+        <div class="day-body">
+          <div class="day-tag">整合 · 主体性宣言</div>
+          <p class="day-task">回顾前 6 天的觉察记录，用"我可以接受______，但绝不放弃对______的判断权"句式，写下 3 条属于自己的主体性原则。</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="#slide6" class="btn-next">继续</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="slide" id="slide6">
+  <div class="slide-container">
+    <p class="scene">觉醒已经开始，接下来是行动。</p>
+    <p class="summary">主体性三支柱 —— 在场・守界・主宰，帮你把人生方向盘重新握回自己手里。</p>
+    <h1>拒绝外包，做回自己。</h1>
+    <p class="golden-quote">真正的强大，不是拥有多少工具，<br/>而是永远做自己人生的决策者。</p>
+    <div class="testimonials">
+      <div class="testimonial"><p>"坚持 7 天练习，现在用 AI 只做执行，重要选择不再盲从。"</p><div class="author">—— 社群用户小 A，产品经理</div></div>
+      <div class="testimonial"><p>"不再因为别人评价否定自己，终于有了自己的判断标准。"</p><div class="author">—— 社群用户小 B，大三学生</div></div>
+      <div class="testimonial"><p>"以前遇到问题就搜 AI，现在先想 10 分钟再用工具，效率反而更高了。"</p><div class="author">—— 社群用户小 C，自由职业者</div></div>
+    </div>
+    <div class="cta-stack">
+      <a href="#" class="cta-item primary">开始 7 天微练习<span class="cta-desc">每天 5 分钟，从觉醒到习惯</span></a>
+      <a href="#" class="cta-item">了解「主体性三支柱」完整方法<span class="cta-desc">系统学习在场、守界、主宰三大底层逻辑</span></a>
+      <a href="#" class="cta-item">加入同频社群，一起实践成长<span class="cta-desc">专属答疑、每周分享、同伴打卡监督</span></a>
+    </div>
+    <p class="retention">收藏本页面，每天打开完成 5 分钟练习。</p>
+  </div>
+</section>
+</body>
+</html>
