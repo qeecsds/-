@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="双人侧脸对视黑白线性素描">
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+  <style>
+    .line {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+    .edge { stroke-width: 3.2; opacity: 0.98; }
+    .heavy { stroke-width: 2.35; opacity: 0.95; }
+    .mid { stroke-width: 1.65; opacity: 0.9; }
+    .fine { stroke-width: 0.95; opacity: 0.78; }
+    .breath { stroke-width: 0.7; opacity: 0.42; }
+  </style>
+
+  <g id="left-profile">
+    <path class="line edge" d="M641 121 C590 139 544 171 510 214 C475 259 455 307 454 357 C454 388 468 413 492 430 C509 442 520 454 520 471 C520 491 503 505 482 514 C452 527 429 548 417 579 C401 622 417 669 458 704 C495 736 543 750 600 743" />
+    <path class="line edge" d="M455 356 C477 358 500 361 524 365 C557 370 580 382 590 399 C599 415 592 430 570 441 C548 452 530 463 520 475" />
+    <path class="line heavy" d="M593 397 C575 403 558 407 540 407" />
+    <path class="line heavy" d="M523 477 C552 478 579 474 603 464" />
+    <path class="line heavy" d="M483 515 C518 521 552 519 586 509" />
+    <path class="line edge" d="M417 579 C455 591 493 595 530 589" />
+    <path class="line mid" d="M500 286 C527 277 554 276 580 284 C596 289 608 298 618 311" />
+    <path class="line heavy" d="M518 306 C546 299 575 303 603 318" />
+    <path class="line mid" d="M536 326 C557 321 578 324 599 334" />
+    <path class="line mid" d="M491 250 C530 230 572 221 618 224" />
+    <path class="line fine" d="M472 289 C511 265 559 253 615 254" />
+    <path class="line fine" d="M463 320 C506 298 553 287 606 290" />
+    <path class="line mid" d="M462 386 C501 388 539 394 577 405" />
+    <path class="line fine" d="M470 413 C504 416 535 424 563 437" />
+    <path class="line fine" d="M485 441 C514 445 541 446 567 442" />
+    <path class="line fine" d="M506 463 C536 466 568 462 601 451" />
+    <path class="line mid" d="M468 538 C503 545 542 543 585 531" />
+    <path class="line fine" d="M451 562 C496 574 544 572 594 557" />
+    <path class="line fine" d="M432 597 C485 614 542 613 603 595" />
+    <path class="line fine" d="M429 633 C490 650 553 647 618 624" />
+    <path class="line mid" d="M450 675 C510 690 572 686 636 663" />
+
+    <path class="line breath" d="M629 142 C578 161 535 194 500 240" />
+    <path class="line breath" d="M635 169 C583 187 539 219 504 266" />
+    <path class="line breath" d="M635 197 C582 213 539 244 504 289" />
+    <path class="line breath" d="M623 229 C574 242 532 268 499 307" />
+    <path class="line breath" d="M608 263 C562 275 523 296 491 326" />
+    <path class="line fine" d="M594 704 C548 716 505 711 465 689" />
+    <path class="line fine" d="M601 676 C548 693 500 688 458 662" />
+    <path class="line fine" d="M608 646 C552 666 500 663 450 636" />
+    <path class="line fine" d="M611 615 C553 637 499 635 448 608" />
+    <path class="line fine" d="M599 585 C547 605 499 604 455 582" />
+    <path class="line breath" d="M530 586 C554 622 578 666 600 718" />
+    <path class="line breath" d="M501 590 C527 633 549 678 568 726" />
+    <path class="line breath" d="M472 583 C500 628 521 673 535 718" />
+  </g>
+
+  <g id="right-profile" transform="translate(1600 0) scale(-1 1)">
+    <path class="line edge" d="M641 121 C590 139 544 171 510 214 C475 259 455 307 454 357 C454 388 468 413 492 430 C509 442 520 454 520 471 C520 491 503 505 482 514 C452 527 429 548 417 579 C401 622 417 669 458 704 C495 736 543 750 600 743" />
+    <path class="line edge" d="M455 356 C477 358 500 361 524 365 C557 370 580 382 590 399 C599 415 592 430 570 441 C548 452 530 463 520 475" />
+    <path class="line heavy" d="M593 397 C575 403 558 407 540 407" />
+    <path class="line heavy" d="M523 477 C552 478 579 474 603 464" />
+    <path class="line heavy" d="M483 515 C518 521 552 519 586 509" />
+    <path class="line edge" d="M417 579 C455 591 493 595 530 589" />
+    <path class="line mid" d="M500 286 C527 277 554 276 580 284 C596 289 608 298 618 311" />
+    <path class="line heavy" d="M518 306 C546 299 575 303 603 318" />
+    <path class="line mid" d="M536 326 C557 321 578 324 599 334" />
+    <path class="line mid" d="M491 250 C530 230 572 221 618 224" />
+    <path class="line fine" d="M472 289 C511 265 559 253 615 254" />
+    <path class="line fine" d="M463 320 C506 298 553 287 606 290" />
+    <path class="line mid" d="M462 386 C501 388 539 394 577 405" />
+    <path class="line fine" d="M470 413 C504 416 535 424 563 437" />
+    <path class="line fine" d="M485 441 C514 445 541 446 567 442" />
+    <path class="line fine" d="M506 463 C536 466 568 462 601 451" />
+    <path class="line mid" d="M468 538 C503 545 542 543 585 531" />
+    <path class="line fine" d="M451 562 C496 574 544 572 594 557" />
+    <path class="line fine" d="M432 597 C485 614 542 613 603 595" />
+    <path class="line fine" d="M429 633 C490 650 553 647 618 624" />
+    <path class="line mid" d="M450 675 C510 690 572 686 636 663" />
+
+    <path class="line breath" d="M629 142 C578 161 535 194 500 240" />
+    <path class="line breath" d="M635 169 C583 187 539 219 504 266" />
+    <path class="line breath" d="M635 197 C582 213 539 244 504 289" />
+    <path class="line breath" d="M623 229 C574 242 532 268 499 307" />
+    <path class="line breath" d="M608 263 C562 275 523 296 491 326" />
+    <path class="line fine" d="M594 704 C548 716 505 711 465 689" />
+    <path class="line fine" d="M601 676 C548 693 500 688 458 662" />
+    <path class="line fine" d="M608 646 C552 666 500 663 450 636" />
+    <path class="line fine" d="M611 615 C553 637 499 635 448 608" />
+    <path class="line fine" d="M599 585 C547 605 499 604 455 582" />
+    <path class="line breath" d="M530 586 C554 622 578 666 600 718" />
+    <path class="line breath" d="M501 590 C527 633 549 678 568 726" />
+    <path class="line breath" d="M472 583 C500 628 521 673 535 718" />
+  </g>
+</svg>
